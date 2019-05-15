@@ -43,6 +43,7 @@
     ]
   },
   "dependencies": {
-    "lodash.isempty": "^4.4.0"
+    "lodash.isempty": "^4.4.0",
+    "lodash.isstring": "^4.0.1"
   }
 }

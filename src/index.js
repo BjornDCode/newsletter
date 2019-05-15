@@ -1,8 +1,9 @@
 const isEmpty = require('lodash.isempty')
+const isString = require('lodash.isstring')
 const Newsletter = require('./Newsletter')
 
 const NoOptionsError = require('./errors/NoOptionsError')
-const NoProviderError = require('./errors/NoProviderError')
+const InvalidProviderError = require('./errors/InvalidProviderError')
 
 module.exports = {
     create: (options = {}) => {
@@ -13,9 +14,13 @@ module.exports = {
         }
 
         if (!options.provider) {
-            throw new NoProviderError(
+            throw new InvalidProviderError(
                 'You must specify a provider in the options'
             )
+        }
+
+        if (!isString(options.provider)) {
+            throw new InvalidProviderError('The provider must be a string')
         }
 
         return new Newsletter()

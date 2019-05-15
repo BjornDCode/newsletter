@@ -1,7 +1,7 @@
 const lib = require('../src/index.js')
 const BaseClass = require('../src/Newsletter.js')
 const NoOptionsError = require('../src/errors/NoOptionsError')
-const NoProviderError = require('../src/errors/NoProviderError')
+const InvalidProviderError = require('../src/errors/InvalidProviderError')
 
 const testConfig = {
     provider: 'mailchimp'
@@ -19,6 +19,14 @@ describe('create', () => {
     })
 
     test('it requires a provider option', () => {
-        expect(() => lib.create({ invalid: '' })).toThrowError(NoProviderError)
+        expect(() => lib.create({ invalid: '' })).toThrowError(
+            InvalidProviderError
+        )
+    })
+
+    test('the provider must be a string', () => {
+        expect(() => lib.create({ provider: {} })).toThrowError(
+            InvalidProviderError
+        )
     })
 })

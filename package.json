@@ -4,15 +4,28 @@
   "description": "Easily subscribe users to a newsletter using any newsletter provider",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "./node_modules/.bin/eslint . --ext .js",
+    "lint:fix": "./node_modules/.bin/eslint --fix . --ext .js"
   },
   "homepage": "https://github.com/BjornDCode/newsletter",
   "bugs": "https://github.com/BjornDCode/newsletter/issues",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/BjornDCode/newsletter.git"
+    "type": "git",
+    "url": "https://github.com/BjornDCode/newsletter.git"
   },
-  "keywords": ["javascript", "email", "newsletter", "http"],
+  "keywords": [
+    "javascript",
+    "email",
+    "newsletter",
+    "http"
+  ],
   "author": "Bjørn Lindholm",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "prettier": "^1.17.1"
+  }
 }

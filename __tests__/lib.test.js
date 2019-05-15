@@ -25,9 +25,7 @@ describe('create', () => {
     })
 
     test('it requires a provider option', () => {
-        expect(() => lib.create({ invalid: '' })).toThrowError(
-            InvalidProviderError
-        )
+        expect(() => lib.create({ key: '' })).toThrowError(InvalidProviderError)
     })
 
     test('the provider must be a string', () => {
@@ -43,8 +41,14 @@ describe('create', () => {
     })
 
     test('it requires an api key', () => {
-        expect(() =>
-            lib.create({ provider: 'mailchimp', invalid: '' })
-        ).toThrowError(InvalidKeyError)
+        expect(() => lib.create({ provider: 'mailchimp' })).toThrowError(
+            InvalidKeyError
+        )
+    })
+
+    test('the api key must be a string', () => {
+        expect(() => lib.create({ ...testConfig, key: {} })).toThrowError(
+            InvalidKeyError
+        )
     })
 })

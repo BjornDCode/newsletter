@@ -40,6 +40,10 @@ module.exports = {
             )
         }
 
+        if (!isString(options.key)) {
+            throw new InvalidKeyError('The api key must be a string')
+        }
+
         return new Newsletter()
     }
 }

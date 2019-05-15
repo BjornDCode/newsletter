@@ -6,6 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "homepage": "https://github.com/BjornDCode/newsletter",
+  "bugs": "https://github.com/BjornDCode/newsletter/issues",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/BjornDCode/newsletter.git"
+  },
   "keywords": ["javascript", "email", "newsletter", "http"],
   "author": "Bjørn Lindholm",
   "license": "ISC"

@@ -6,6 +6,7 @@ const PROVIDERS = require('./enums').PROVIDERS
 
 const InvalidOptionsError = require('./errors/InvalidOptionsError')
 const InvalidProviderError = require('./errors/InvalidProviderError')
+const InvalidKeyError = require('./errors/InvalidKeyError')
 
 module.exports = {
     create: (options = {}) => {
@@ -31,6 +32,12 @@ module.exports = {
 
         if (PROVIDERS.indexOf(options.provider) === -1) {
             throw new InvalidProviderError('The provider is not supported')
+        }
+
+        if (!options.key) {
+            throw new InvalidKeyError(
+                'You must specify an api key in the options'
+            )
         }
 
         return new Newsletter()

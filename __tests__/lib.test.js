@@ -2,9 +2,11 @@ const lib = require('../src/index.js')
 const BaseClass = require('../src/Newsletter.js')
 const InvalidOptionsError = require('../src/errors/InvalidOptionsError')
 const InvalidProviderError = require('../src/errors/InvalidProviderError')
+const InvalidKeyError = require('../src/errors/InvalidKeyError')
 
 const testConfig = {
-    provider: 'mailchimp'
+    provider: 'mailchimp',
+    key: 'xxyyxx'
 }
 
 describe('create', () => {
@@ -38,5 +40,11 @@ describe('create', () => {
         expect(() =>
             lib.create({ provider: 'non-supported-provider' })
         ).toThrowError(InvalidProviderError)
+    })
+
+    test('it requires an api key', () => {
+        expect(() =>
+            lib.create({ provider: 'mailchimp', invalid: '' })
+        ).toThrowError(InvalidKeyError)
     })
 })

@@ -1,6 +1,7 @@
 const isEmpty = require('lodash.isempty')
 const isString = require('lodash.isstring')
 const Newsletter = require('./Newsletter')
+const PROVIDERS = require('./enums').PROVIDERS
 
 const NoOptionsError = require('./errors/NoOptionsError')
 const InvalidProviderError = require('./errors/InvalidProviderError')
@@ -21,6 +22,10 @@ module.exports = {
 
         if (!isString(options.provider)) {
             throw new InvalidProviderError('The provider must be a string')
+        }
+
+        if (PROVIDERS.indexOf(options.provider) === -1) {
+            throw new InvalidProviderError('The provider is not supported')
         }
 
         return new Newsletter()

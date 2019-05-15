@@ -29,4 +29,10 @@ describe('create', () => {
             InvalidProviderError
         )
     })
+
+    test('the provider is not supported', () => {
+        expect(() =>
+            lib.create({ provider: 'non-supported-provider' })
+        ).toThrowError(InvalidProviderError)
+    })
 })

@@ -1,6 +1,6 @@
 const lib = require('../src/index.js')
 const BaseClass = require('../src/Newsletter.js')
-const NoOptionsError = require('../src/errors/NoOptionsError')
+const InvalidOptionsError = require('../src/errors/InvalidOptionsError')
 const InvalidProviderError = require('../src/errors/InvalidProviderError')
 
 const testConfig = {
@@ -15,7 +15,11 @@ describe('create', () => {
     })
 
     test('it requires options', () => {
-        expect(lib.create).toThrowError(NoOptionsError)
+        expect(lib.create).toThrowError(InvalidOptionsError)
+    })
+
+    test('options must be an object', () => {
+        expect(() => lib.create('options')).toThrowError(InvalidOptionsError)
     })
 
     test('it requires a provider option', () => {

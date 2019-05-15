@@ -1,15 +1,20 @@
 const isEmpty = require('lodash.isempty')
 const isString = require('lodash.isstring')
+const isObject = require('lodash.isobject')
 const Newsletter = require('./Newsletter')
 const PROVIDERS = require('./enums').PROVIDERS
 
-const NoOptionsError = require('./errors/NoOptionsError')
+const InvalidOptionsError = require('./errors/InvalidOptionsError')
 const InvalidProviderError = require('./errors/InvalidProviderError')
 
 module.exports = {
     create: (options = {}) => {
+        if (!isObject(options)) {
+            throw new InvalidOptionsError('Options must be an object')
+        }
+
         if (isEmpty(options)) {
-            throw new NoOptionsError(
+            throw new InvalidOptionsError(
                 'You must provide .create with an object of options'
             )
         }

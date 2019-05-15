@@ -41,5 +41,8 @@
       "eslint --fix",
       "git add"
     ]
+  },
+  "dependencies": {
+    "lodash.isempty": "^4.4.0"
   }
 }

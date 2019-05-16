@@ -59,4 +59,10 @@ describe('create', () => {
 
         expect(instance.list).toBe('subscribers')
     })
+
+    test('it accepts a default list name as an option', () => {
+        const instance = lib.create({ ...testConfig, list: 'custom-list' })
+
+        expect(instance.list).toBe('custom-list')
+    })
 })

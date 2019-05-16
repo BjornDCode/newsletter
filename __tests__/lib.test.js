@@ -53,4 +53,10 @@ describe('create', () => {
             InvalidKeyError
         )
     })
+
+    test('it has a default list name', () => {
+        const instance = lib.create(testConfig)
+
+        expect(instance.list).toBe('subscribers')
+    })
 })

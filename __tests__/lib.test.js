@@ -14,6 +14,8 @@ describe('create', () => {
         const instance = lib.create(testConfig)
 
         expect(instance).toBeInstanceOf(BaseClass)
+        expect(instance.provider).toBe(testConfig.provider)
+        expect(instance.key).toBe(testConfig.key)
     })
 
     test('it requires options', () => {

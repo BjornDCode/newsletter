@@ -46,7 +46,7 @@ const create = (options = {}) => {
         throw new InvalidKeyError('The api key must be a string')
     }
 
-    return new Newsletter()
+    return new Newsletter(options)
 }
 
 module.exports = {

@@ -7,6 +7,7 @@ const PROVIDERS = require('./enums').PROVIDERS
 const InvalidOptionsError = require('./errors/InvalidOptionsError')
 const InvalidProviderError = require('./errors/InvalidProviderError')
 const InvalidKeyError = require('./errors/InvalidKeyError')
+const InvalidListError = require('./errors/InvalidListError')
 
 /**
  * Creates an instance of Newsletter
@@ -44,6 +45,10 @@ const create = (options = {}) => {
 
     if (!isString(options.key)) {
         throw new InvalidKeyError('The api key must be a string')
+    }
+
+    if (options.hasOwnProperty('list') && !isString(options.list)) {
+        throw new InvalidListError('The list name must be a string')
     }
 
     return new Newsletter(options)

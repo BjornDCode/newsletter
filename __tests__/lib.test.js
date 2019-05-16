@@ -3,6 +3,7 @@ const BaseClass = require('../src/Newsletter.js')
 const InvalidOptionsError = require('../src/errors/InvalidOptionsError')
 const InvalidProviderError = require('../src/errors/InvalidProviderError')
 const InvalidKeyError = require('../src/errors/InvalidKeyError')
+const InvalidListError = require('../src/errors/InvalidListError')
 
 const testConfig = {
     provider: 'mailchimp',
@@ -64,5 +65,11 @@ describe('create', () => {
         const instance = lib.create({ ...testConfig, list: 'custom-list' })
 
         expect(instance.list).toBe('custom-list')
+    })
+
+    test('the list name must be a string', () => {
+        expect(() => lib.create({ ...testConfig, list: {} })).toThrowError(
+            InvalidListError
+        )
     })
 })

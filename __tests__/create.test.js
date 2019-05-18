@@ -5,10 +5,7 @@ const InvalidProviderError = require('../src/errors/InvalidProviderError')
 const InvalidKeyError = require('../src/errors/InvalidKeyError')
 const InvalidListError = require('../src/errors/InvalidListError')
 
-const testConfig = {
-    provider: 'mailchimp',
-    key: 'xxyyxx'
-}
+const testConfig = require('./fixtures/config')
 
 describe('create', () => {
     test('it creates an instance of Newsletter', () => {

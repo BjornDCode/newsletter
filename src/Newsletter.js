@@ -1,3 +1,5 @@
+const validateOptions = require('./helpers').validateOptions
+
 function Newsletter(options = {}) {
     this.provider = options.provider
     this.key = options.key
@@ -10,6 +12,8 @@ function Newsletter(options = {}) {
  * @return {undefined}
  */
 Newsletter.prototype.update = function(options = {}) {
+    validateOptions(options, false)
+
     this.provider = options.hasOwnProperty('provider')
         ? options.provider
         : this.provider

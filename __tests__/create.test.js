@@ -34,7 +34,7 @@ describe('create', () => {
         )
     })
 
-    test('the provider is not supported', () => {
+    test('the provider must be supported', () => {
         expect(() =>
             lib.create({ provider: 'non-supported-provider' })
         ).toThrowError(InvalidProviderError)
